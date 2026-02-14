@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ระบบเช็กราคาทองคำ 5 แหล่งข้อมูล</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Kanit', sans-serif; background-color: #fdfbf7; }
+        .gold-gradient { background: linear-gradient(135deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c); }
+        .card-shadow { box-shadow: 0 10px 25px -5px rgba(187, 143, 44, 0.15); }
+    </style>
+</head>
+<body class="bg-stone-50 text-stone-800">
+
+    <!-- Header -->
+    <header class="gold-gradient text-stone-900 py-8 px-4 shadow-lg mb-8">
+        <div class="max-w-6xl mx-auto text-center">
+            <h1 class="text-3xl md:text-4xl font-bold mb-2">เช็กราคาทองคำวันนี้</h1>
+            <p class="text-lg opacity-90" id="current-date">วันเสาร์ที่ 14 กุมภาพันธ์ 2569</p>
+            <div class="mt-4 inline-flex items-center bg-white/30 backdrop-blur-sm px-4 py-1 rounded-full text-sm font-semibold">
+                <span class="mr-2">●</span> อัปเดตล่าสุด: 09:04 น. (ครั้งที่ 1)
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 pb-20">
+        
+        <!-- Main Price Highlight -->
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+            <div class="bg-white rounded-2xl p-8 card-shadow border border-yellow-100 flex flex-col justify-center items-center text-center">
+                <span class="text-stone-500 text-sm font-medium uppercase tracking-wider mb-2">ทองคำแท่ง 96.5%</span>
+                <div class="text-5xl font-bold text-stone-900 mb-4">74,200 <span class="text-xl font-normal text-stone-400">บาท</span></div>
+                <div class="flex items-center text-green-600 font-semibold bg-green-50 px-4 py-1 rounded-full">
+                    <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M12 7a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0V8.414l-4.293 4.293a1 1 0 01-1.414 0L8 10.414l-4.293 4.293a1 1 0 01-1.414-1.414l5-5a1 1 0 011.414 0L11 10.586 14.586 7H12z" clip-rule="evenodd"></path></svg>
+                    ขึ้น 900 บาท
+                </div>
+            </div>
+            <div class="bg-white rounded-2xl p-8 card-shadow border border-yellow-100 flex flex-col justify-center items-center text-center">
+                <span class="text-stone-500 text-sm font-medium uppercase tracking-wider mb-2">ทองรูปพรรณ 96.5% (ขายออก)</span>
+                <div class="text-5xl font-bold text-stone-900 mb-4">75,000 <span class="text-xl font-normal text-stone-400">บาท</span></div>
+                <div class="flex items-center text-green-600 font-semibold bg-green-50 px-4 py-1 rounded-full">
+                    <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M12 7a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0V8.414l-4.293 4.293a1 1 0 01-1.414 0L8 10.414l-4.293 4.293a1 1 0 01-1.414-1.414l5-5a1 1 0 011.414 0L11 10.586 14.586 7H12z" clip-rule="evenodd"></path></svg>
+                    ปรับขึ้นตามสมาคมฯ
+                </div>
+            </div>
+        </section>
+
+        <!-- Sources Comparison Table -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold mb-6 flex items-center">
+                <span class="w-8 h-8 bg-yellow-500 text-white rounded-lg flex items-center justify-center mr-3">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                </span>
+                เปรียบเทียบจาก 5 แหล่งข้อมูล
+            </h2>
+            <div class="bg-white rounded-2xl shadow-sm border border-stone-100 overflow-hidden">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead class="bg-stone-50 border-b border-stone-100">
+                            <tr>
+                                <th class="p-4 font-semibold text-stone-600">แหล่งข้อมูล</th>
+                                <th class="p-4 font-semibold text-stone-600">ทองคำแท่ง (รับซื้อ/ขาย)</th>
+                                <th class="p-4 font-semibold text-stone-600">ทองรูปพรรณ (ขายออก)</th>
+                                <th class="p-4 font-semibold text-stone-600">สถานะ</th>
+                            </tr>
+                        </thead>
+                        <tbody id="source-table-body" class="divide-y divide-stone-50 text-sm md:text-base">
+                            <!-- JS Will Render Here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Calculator Section -->
+        <section class="bg-stone-900 rounded-3xl p-8 text-white card-shadow mb-12 relative overflow-hidden">
+            <div class="absolute top-0 right-0 p-8 opacity-10">
+                <svg class="w-32 h-32" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V4a2 2 0 00-2-2H6zm1 2a1 1 0 000 2h6a1 1 0 100-2H7zm6 7a1 1 0 011 1v3a1 1 0 11-2 0v-3a1 1 0 011-1zm-3 3a1 1 0 100 2h.01a1 1 0 100-2H10zm3 0a1 1 0 100 2h.01a1 1 0 100-2H13zm-3-3a1 1 0 100 2h.01a1 1 0 100-2H10zm-7 0a1 1 0 011-1h.01a1 1 0 110 2H4a1 1 0 01-1-1zm1-3a1 1 0 100 2h.01a1 1 0 100-2H4zm3 0a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h.01a1 1 0 100-2H10z" clip-rule="evenodd"></path></svg>
+            </div>
+            <div class="relative z-10">
+                <h2 class="text-2xl font-bold mb-6">เครื่องคำนวณราคา (ทองรูปพรรณ)</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-end">
+                    <div>
+                        <label class="block text-stone-400 text-sm mb-2">เลือกน้ำหนักทอง</label>
+                        <select id="gold-weight-select" class="w-full bg-stone-800 border border-stone-700 rounded-xl p-3 text-white focus:outline-none focus:border-yellow-500 transition-colors">
+                            <option value="1">1 บาท</option>
+                            <option value="2">2 บาท</option>
+                            <option value="5">5 บาท</option>
+                            <option value="10">10 บาท</option>
+                            <option value="0.5">2 สลึง (0.5 บาท)</option>
+                            <option value="0.25">1 สลึง (0.25 บาท)</option>
+                            <option value="0.125">ครึ่งสลึง (0.125 บาท)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-stone-400 text-sm mb-2">ค่ากำเหน็จโดยประมาณ (บาท)</label>
+                        <input type="number" id="gold-fee" value="500" class="w-full bg-stone-800 border border-stone-700 rounded-xl p-3 text-white focus:outline-none focus:border-yellow-500 transition-colors">
+                    </div>
+                    <div class="bg-yellow-500 text-stone-900 rounded-xl p-4 flex flex-col justify-center">
+                        <span class="text-xs font-bold uppercase opacity-70">ยอดรวมโดยประมาณ</span>
+                        <div class="text-2xl font-black" id="total-price-result">75,500 บาท</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer Note -->
+        <footer class="text-center text-stone-400 text-sm space-y-4">
+            <p>* ข้อมูลราคาทองคำเป็นการจำลองสถานการณ์ตามวันและเวลาที่ระบุ โปรดตรวจสอบราคา ณ หน้าร้านอีกครั้งก่อนทำรายการ</p>
+            <div class="flex justify-center space-x-4">
+                <a href="#" class="hover:text-yellow-600 transition-colors">นโยบายความเป็นส่วนตัว</a>
+                <span>|</span>
+                <a href="#" class="hover:text-yellow-600 transition-colors">ติดต่อสอบถาม</a>
+            </div>
+        </footer>
+
+    </main>
+
+    <script>
+        const sources = [
+            { name: 'สมาคมค้าทองคำ', buy: 74000, sell: 74200, jewelry: 75000, status: 'ประกาศทางการ', url: 'https://www.goldtraders.or.th' },
+            { name: 'ฮั่วเซ่งเฮง', buy: 74000, sell: 74200, jewelry: 75000, status: 'อ้างอิงสมาคมฯ', url: 'https://www.huasengheng.com' },
+            { name: 'InterGOLD', buy: 74035, sell: 74165, jewelry: 0, status: 'ราคาออนไลน์', url: 'https://www.intergold.co.th' },
+            { name: 'แม่ทองสุก (MTS)', buy: 74255, sell: 74395, jewelry: 75200, status: 'Real-time Spot', url: 'https://www.mtsgold.co.th' },
+            { name: 'ไทยรัฐ Money', buy: 74000, sell: 74200, jewelry: 75000, status: 'อ้างอิงสมาคมฯ', url: 'https://www.thairath.co.th' }
+        ];
+
+        const baseJewelryPrice = 75000;
+
+        function renderTable() {
+            const tableBody = document.getElementById('source-table-body');
+            tableBody.innerHTML = sources.map(source => `
+                <tr class="hover:bg-stone-50/50 transition-colors">
+                    <td class="p-4">
+                        <div class="font-bold text-stone-800">${source.name}</div>
+                        <a href="${source.url}" target="_blank" class="text-xs text-yellow-600 hover:underline">ไปที่เว็บไซต์ &rarr;</a>
+                    </td>
+                    <td class="p-4">
+                        <div class="flex flex-col">
+                            <span class="text-green-600 font-semibold">${source.buy.toLocaleString()}</span>
+                            <span class="text-red-600 font-semibold">${source.sell.toLocaleString()}</span>
+                        </div>
+                    </td>
+                    <td class="p-4 font-bold text-stone-700">
+                        ${source.jewelry > 0 ? source.jewelry.toLocaleString() : '<span class="text-stone-300">ไม่ระบุ</span>'}
+                    </td>
+                    <td class="p-4">
+                        <span class="px-2 py-1 bg-stone-100 text-stone-600 text-xs rounded-md font-medium">
+                            ${source.status}
+                        </span>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function calculatePrice() {
+            const weight = parseFloat(document.getElementById('gold-weight-select').value);
+            const fee = parseFloat(document.getElementById('gold-fee').value) || 0;
+            const totalPrice = (baseJewelryPrice * weight) + fee;
+            document.getElementById('total-price-result').innerText = totalPrice.toLocaleString() + ' บาท';
+        }
+
+        // Initialize
+        window.onload = () => {
+            renderTable();
+            
+            // Add Listeners
+            document.getElementById('gold-weight-select').addEventListener('change', calculatePrice);
+            document.getElementById('gold-fee').addEventListener('input', calculatePrice);
+        };
+    </script>
+</body>
+</html>
